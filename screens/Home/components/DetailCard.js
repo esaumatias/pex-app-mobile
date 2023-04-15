@@ -10,6 +10,7 @@ import {
 } from "react-native";
 
 import MyCarousel from "./MyCarousel";
+import CardModal from "./CardModal";
 import { TopBar } from "../../../components/TopBar";
 
 import phoneIcon from "../../../assets/phoneIcon.png";
@@ -22,6 +23,15 @@ import camIcon from "../../../assets/camIcon.png";
 
 export const DetailCard = ({ navigation, route }) => {
   const { value } = route.params;
+  const [modalVisible, setModalVisible] = useState(false);
+
+  const handlePress = () => {
+    setModalVisible(true);
+  };
+
+  const handleClose = () => {
+    setModalVisible(false);
+  };
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
@@ -43,55 +53,63 @@ export const DetailCard = ({ navigation, route }) => {
 
           <MyCarousel value={value} />
 
-          <Text
-            style={{
-              ...styles.texto,
-              color: "#999999",
-              marginTop: 15,
-              textAlign: "left",
-              fontSize: 12,
-            }}
-          >
-            {value.subtitle}
-          </Text>
+          <TouchableOpacity onPress={handlePress}>
+            <Text
+              style={{
+                ...styles.texto,
+                color: "#999999",
+                marginTop: 15,
+                textAlign: "left",
+                fontSize: 12,
+              }}
+            >
+              {value.subtitle}
+            </Text>
 
-          <Text
-            style={{
-              color: "#000000",
-              marginTop: 1,
-              textAlign: "left",
-              fontSize: 24,
-              fontWeight: '500',
-            }}
-          >
-            {value.title}
-          </Text>
+            <Text
+              style={{
+                color: "#000000",
+                marginTop: 1,
+                textAlign: "left",
+                fontSize: 24,
+                fontWeight: "500",
+              }}
+            >
+              {value.title}
+            </Text>
 
-          <Text
-            style={{
-              ...styles.texto,
-              color: "#000000",
-              marginTop: 10,
-              textAlign: "left",
-              fontSize: 14,
-            }}
-          >
-            Informações
-          </Text>
+            <Text
+              style={{
+                ...styles.texto,
+                color: "#000000",
+                marginTop: 10,
+                textAlign: "left",
+                fontSize: 14,
+              }}
+            >
+              Informações
+            </Text>
+            <Text
+              style={{
+                ...styles.texto,
+                color: "#999999",
+                marginTop: 0,
+                textAlign: "left",
+                fontSize: 14,
+                marginBottom: 20,
+              }}
+            >
+              Consequat, rhoncus quam auctor non fermentum velit. Sapien mauris
+              amet enim ac nibh enim amet. Lectus orci, id vel sollicitudin.
+            </Text>
+          </TouchableOpacity>
 
-          <Text
-            style={{
-              ...styles.texto,
-              color: "#999999",
-              marginTop: 0,
-              textAlign: "left",
-              fontSize: 14,
-              marginBottom: 20
-            }}
-          >
-            Consequat, rhoncus quam auctor non fermentum velit. Sapien mauris
-            amet enim ac nibh enim amet. Lectus orci, id vel sollicitudin.
-          </Text>
+          <CardModal
+            cardInfo={value}
+            visible={modalVisible}
+            onClose={handleClose}
+            navigation={navigation}
+          />
 
           <View style={styles.containerButons}>
             <TouchableOpacity
