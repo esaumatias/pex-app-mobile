@@ -11,6 +11,7 @@ import { SessionContext } from "../providers/SessionProvider";
 
 import { Home } from "../screens/Home";
 import { DetailCard } from '../screens/Home/components/DetailCard';
+import { Perfil } from "../screens/Perfil";
 
 import cartIcon from "../assets/cartIcon.png";
 import Profile from "../assets/Profile.png";
@@ -80,8 +81,8 @@ export const AuthorizedRoutes = () => {
         />
 
         <MainBottomTab.Screen
-          name="HomeRoutes3"
-          component={HomeRoutes}
+          name="PerfilRoutes"
+          component={PerfilRoutes}
           options={{
             headerShown: false,
             tabBarLabel: "Perfil",
@@ -124,3 +125,24 @@ export const HomeRoutes = () => (
     />
   </HomeStack.Navigator>
 );
+
+const PerfilStack = createNativeStackNavigator();
+
+export const PerfilRoutes = () => (
+  <PerfilStack.Navigator initialRouteName="Perfil">
+    <PerfilStack.Screen
+      name="Perfil"
+      component={Perfil}
+      options={{
+        headerStyle: {
+          // backgroundColor: theme.colors.primary_alt,
+        },
+        headerTintColor: "#fff",
+        headerTitleAlign: "center",
+        headerTransparent: true,
+      }}
+    />
+
+  </PerfilStack.Navigator>
+);
+

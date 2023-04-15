@@ -50,6 +50,7 @@ export const SessionProvider = ({ children, expoToken }) => {
         signIn,
         signOut,
         user: userData,
+        setUserData,
         loading,
         register
       }}
