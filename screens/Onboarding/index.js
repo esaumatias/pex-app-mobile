@@ -1,38 +1,40 @@
 import { StyleSheet, View, Text, Image, TouchableOpacity } from "react-native";
-
+import { TopBar } from "../../components/TopBar";
 import Logo from "../../assets/Logo.png";
 import Arrow from "../../assets/arrow.png";
 
 export const Onboarding = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <TouchableOpacity
-        onPress={() => navigation.navigate("Login")}
-        style={styles.containerTop}
-      >
-        <Text style={styles.texto}>Pular</Text>
-      </TouchableOpacity>
-
-      <View style={styles.containerBottom}>
-        <Image source={Logo} style={styles.logo} />
-
-        <View>
-          <Text style={styles.title}>Bem vindo a PEX</Text>
-          <Text style={styles.subtitle}>
-            Economize tempo e dinheiro em todas as etapas da sua obra. Na
-            reforma ou construção nós iremos te auxiliar em tudo.
-          </Text>
-        </View>
-
+    <>
+      <TopBar />
+      <View style={styles.container}>
         <TouchableOpacity
-          buttonColor="#f09200"
           onPress={() => navigation.navigate("Login")}
-          style={styles.buttonArrow}
+          style={styles.containerTop}
         >
-          <Image source={Arrow} />
+          <Text style={styles.texto}>Pular</Text>
         </TouchableOpacity>
+
+        <View style={styles.containerBottom}>
+          <Image source={Logo} style={styles.logo} />
+
+          <View>
+            <Text style={styles.title}>Bem vindo a PEX</Text>
+            <Text style={styles.subtitle}>
+              Economize tempo e dinheiro em todas as etapas da sua obra. Na
+              reforma ou construção nós iremos te auxiliar em tudo.
+            </Text>
+          </View>
+
+          <TouchableOpacity
+            onPress={() => navigation.navigate("Login")}
+            style={styles.buttonArrow}
+          >
+            <Image source={Arrow} />
+          </TouchableOpacity>
+        </View>
       </View>
-    </View>
+    </>
   );
 };
 
@@ -41,16 +43,17 @@ const styles = StyleSheet.create({
     display: "flex",
     flex: 1,
     paddingHorizontal: 32,
+    backgroundColor: '#ffffff'
   },
   containerTop: {
     flex: 1,
     display: "flex",
-    alignSelf: 'flex-end',
-    alignItems: 'center',
-    justifyContent: 'center'
+    alignSelf: "flex-end",
+    alignItems: "center",
+    justifyContent: "center",
   },
   containerBottom: {
-    flex: 3,
+    flex: 4,
     display: "flex",
     flexDirection: "column",
     justifyContent: "space-around",

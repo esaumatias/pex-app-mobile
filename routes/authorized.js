@@ -22,7 +22,7 @@ export const AuthorizedRoutes = () => {
         }
         screenOptions={{
           tabBarStyle: {
-            backgroundColor: theme.colors.primary_alt,
+            backgroundColor: 'theme.colors.primary_alt',
             minHeight: 55,
           },
           tabBarInactiveTintColor: "#fff",

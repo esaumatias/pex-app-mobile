@@ -17,13 +17,13 @@ import { TopBar } from "../../components/TopBar";
 import { Input } from "../../components/Input";
 import { SessionContext } from "../../providers/SessionProvider";
 
-import HeaderImage from "../../assets/headerImage.jpg";
+import HeaderImage from "../../assets/HeaderSigUp.png";
 import IconEmail from "../../assets/IconEmail.png";
 import IconSenha from "../../assets/IconSenha.png";
 
 const screenWidth = Dimensions.get("window").width;
 
-export const Login = ({ navigation }) => {
+export const SignUp = ({ navigation }) => {
   const { signIn } = useContext(SessionContext);
 
   const signInForm = useFormik({
@@ -58,7 +58,7 @@ export const Login = ({ navigation }) => {
 
           <View style={styles.containerBottom}>
             <View>
-              <Text style={styles.title}>Bem vindo a PEX</Text>
+              <Text style={styles.title}>Crie sua conta na PEX</Text>
               <Text style={styles.subtitle}>
                 Informe os seus dados para ter acesso a um mundo de economia
                 para sua obra
@@ -80,9 +80,13 @@ export const Login = ({ navigation }) => {
                   image={IconSenha}
                 />
 
-                <Text style={{ ...styles.texto, color: "#F09200" }}>
-                  Esqueci minha senha
-                </Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              <Text style={{ ...styles.texto, color: "#999999" }}>
+                Li e aceito os{" "}
+                <Text style={{ color: "#F09200" }}>Termos de serviço</Text>{" "}
+                e políticia de privacidade
+              </Text>
+            </TouchableOpacity>
               </View>
             </View>
 
@@ -90,13 +94,13 @@ export const Login = ({ navigation }) => {
               onPress={() => navigation.navigate("Login")}
               style={styles.buttomAcess}
             >
-              <Text style={styles.texto}>Acessar</Text>
+              <Text style={{...styles.texto, textAlign: 'center'}}>Continuar</Text>
             </TouchableOpacity>
 
-            <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-              <Text style={{ ...styles.texto, color: "#999999" }}>
-                Não possui uma conta?{" "}
-                <Text style={{ color: "#F09200" }}>Criar conta</Text>
+            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+              <Text style={{...styles.texto, textAlign: 'center', color: "#999999"}}>
+                Já possui uma conta?{" "}
+                <Text style={{ color: "#F09200" }}>Acessar</Text>
               </Text>
             </TouchableOpacity>
           </View>
@@ -129,11 +133,10 @@ const styles = StyleSheet.create({
     width: screenWidth,
     position: "absolute",
   },
-
   title: {
     fontStyle: "normal",
     fontWeight: "500",
-    fontSize: 24,
+    fontSize: 18,
     lineHeight: 31,
     display: "flex",
     alignItems: "flex-start",
@@ -178,7 +181,9 @@ const styles = StyleSheet.create({
     lineHeight: 18,
     display: "flex",
     alignItems: "center",
-    textAlign: "center",
+    textAlign: "justify",
     color: "#FFFFFF",
+    width: 271,
+    alignSelf: 'center'
   },
 });
