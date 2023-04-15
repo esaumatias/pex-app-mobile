@@ -41,7 +41,7 @@ export const SignUp = ({ navigation }) => {
         .min(8, "A senha deve conter pelo menos 8 caracteres.")
         .required("Senha é obrigatório!"),
     }),
-    onSubmit: (values) => signIn(values),
+    onSubmit: (values) => navigation.navigate('Step1', { value: values }),
   });
 
   return (
@@ -91,7 +91,7 @@ export const SignUp = ({ navigation }) => {
             </View>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate("Login")}
+              onPress={signInForm.submitForm}
               style={styles.buttomAcess}
             >
               <Text style={{...styles.texto, textAlign: 'center'}}>Continuar</Text>

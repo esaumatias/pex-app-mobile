@@ -4,8 +4,11 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { Login } from "../screens/Login";
 import { Onboarding } from '../screens/Onboarding';
+
+//Register
+import { TermosServico } from '../screens/SignUp/components/TermosServico';
 import { SignUp } from '../screens/SignUp';
-import { TermosServico } from '../screens/TermosServico';
+import { Step1 } from '../screens/SignUp/Step1';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +39,14 @@ export const PublicRoutes = () => (
           }}
           name="SignUp"
           component={SignUp}
+        />
+
+        <Stack.Screen
+          options={{
+            headerShown: false,
+          }}
+          name="Step1"
+          component={Step1}
         />
 
         <Stack.Screen

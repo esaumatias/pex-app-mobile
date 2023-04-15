@@ -9,11 +9,11 @@ import {
   Dimensions,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
-import { TopBar } from "../../components/TopBar";
+import { TopBar } from "../../../../components/TopBar";
 
-import Arrow from "../../assets/arrow.png";
-import Upload from "../../assets/Upload.png";
-import ArrowLeft from "../../assets/ArrowLeft.png";
+import Arrow from "../../../../assets/arrow.png";
+import Upload from "../../../../assets/Upload.png";
+import ArrowLeft from "../../../../assets/ArrowLeft.png";
 
 const windowHeight = Dimensions.get("window").height;
 
@@ -167,10 +167,6 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#fff",
     paddingHorizontal: 32,
-  },
-  scrollViewContent: {
-    paddingHorizontal: 20,
-    paddingBottom: 60,
   },
   termos: {
     fontStyle: "normal",

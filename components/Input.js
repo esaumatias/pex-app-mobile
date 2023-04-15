@@ -17,6 +17,7 @@ export const Input = ({
   inputStyle,
   assistiveText,
   image,
+  type
 }) => {
   return (
     <View
@@ -27,7 +28,7 @@ export const Input = ({
     >
       <View style={styles.sectionStyle}>
         {image ? <Image source={image} style={styles.imageStyle} /> : ''}
-
+        {type === 'phone' ? <Text style={styles.textPhone}>+55 |</Text> : ''}
         <TextInput
           style={{ ...styles.input, ...inputStyle }}
           placeholder={placeholder}
@@ -55,7 +56,7 @@ export const Input = ({
 
 const styles = StyleSheet.create({
   container: {
-    marginBottom: 20,
+    marginBottom: 15,
   },
   input: {
     fontSize: 15,
@@ -64,7 +65,7 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   text: {
-    color: "B8B5C3",
+    color: "#B8B5C3",
     fontStyle: "normal",
     fontWeight: "400",
     fontSize: 14,
@@ -84,4 +85,14 @@ const styles = StyleSheet.create({
     resizeMode: "stretch",
     alignItems: "center",
   },
+  textPhone: {
+    color: "#B8B5C3",
+    fontStyle: "normal",
+    fontWeight: "400",
+    fontSize: 14,
+    lineHeight: 18,
+    display: "flex",
+    alignItems: "center",
+    paddingHorizontal: 5,
+  }
 });
