@@ -25,7 +25,7 @@ import ArrowLeft from "../../assets/ArrowLeft.png";
 const { width, height } = Dimensions.get("window");
 
 export const Home = ({ navigation, route }) => {
-  const { register } = useContext(SessionContext);
+  const { user } = useContext(SessionContext);
 
   const data = [
     {
@@ -98,7 +98,7 @@ export const Home = ({ navigation, route }) => {
           Produtos populares
         </Text>
 
-        <CarouselCartItem />
+        <CarouselCartItem navigation={navigation} user={user} />
 
         <CarouselLogos />
 

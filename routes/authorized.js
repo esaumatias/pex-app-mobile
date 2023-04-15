@@ -10,6 +10,8 @@ import { theme } from "../utils/theme";
 import { SessionContext } from "../providers/SessionProvider";
 
 import { Home } from "../screens/Home";
+import { DetailCard } from '../screens/Home/components/DetailCard';
+
 import cartIcon from "../assets/cartIcon.png";
 import Profile from "../assets/Profile.png";
 import Bookmark from "../assets/Bookmark.png";
@@ -106,6 +108,19 @@ export const HomeRoutes = () => (
         headerTitleAlign: "center",
         headerTransparent: true,
       }}
+    />
+
+    <HomeStack.Screen
+      name="DetailCard"
+      options={{
+        headerTitle: "",
+        headerStyle: {
+          backgroundColor: theme.colors.primary_alt,
+        },
+        headerTintColor: "#fff",
+        headerTitleAlign: "center",
+      }}
+      component={DetailCard}
     />
   </HomeStack.Navigator>
 );

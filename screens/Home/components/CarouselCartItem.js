@@ -14,31 +14,28 @@ const data = [
   { id: 4, image: product2, title: 'Portobello Mont blanc Natural 90x...', subtitle: 'Pisos e porcelanato' },
 ];
 
-const CarouselItem = ({ item }) => {
-  return (
-    <View style={styles.carouselItem}>
-      <Image source={item.image} style={styles.carouselImage} />
-      <View style={styles.carouselContent}>
-        <Text style={styles.carouselSubtitle}>{item.subtitle}</Text>
-        <Text style={styles.carouselTitle}>{item.title}</Text>
-        <TouchableOpacity style={styles.carouselButton}>
-          <Text style={styles.carouselButtonText}>Comprar</Text>
-        </TouchableOpacity>
-      </View>
-    </View>
-  );
-};
 
-const CarouselCartItem = () => {
+const CarouselCartItem = ({ navigation, user }) => {
   const carouselRef = React.useRef(null);
   const [currentIndex, setCurrentIndex] = React.useState(0);
-
+  
   const handleSnapToItem = (index) => {
     setCurrentIndex(index);
   };
-
-  const handleCarouselItemPress = (index) => {
-    carouselRef.current.snapToItem(index);
+  
+  const CarouselItem = ({ item }) => {
+    return (
+      <TouchableOpacity style={styles.carouselItem} onPress={() => navigation.navigate("DetailCard", { value: {...item}})}>
+        <Image source={item.image} style={styles.carouselImage} />
+        <View style={styles.carouselContent}>
+          <Text style={styles.carouselSubtitle}>{item.subtitle}</Text>
+          <Text style={styles.carouselTitle}>{item.title}</Text>
+          <TouchableOpacity style={styles.carouselButton}>
+            <Text style={styles.carouselButtonText}>Comprar</Text>
+          </TouchableOpacity>
+        </View>
+      </TouchableOpacity>
+    );
   };
 
   return (
