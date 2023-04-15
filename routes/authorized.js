@@ -4,12 +4,13 @@ import { NavigationContainer } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Image } from "react-native";
 
-import { theme } from '../utils/theme';
+import { theme } from "../utils/theme";
 import { SessionContext } from "../providers/SessionProvider";
 
-import { Home } from '../screens/Home';
-
+import { Home } from "../screens/Home";
+import cartIcon from "../assets/cartIcon.png";
 
 const MainBottomTab = createBottomTabNavigator();
 
@@ -17,39 +18,45 @@ export const AuthorizedRoutes = () => {
   const { user } = useContext(SessionContext);
 
   return (
-    <NavigationContainer>
-      <StatusBar style="light" />
+    <NavigationContainer
+      style={{ backgroundColor: "#fff" }}
+      options={{ headerStyle: { backgroundColor: "#fff" } }}
+    >
+      {/* <StatusBar style="" /> */}
       <MainBottomTab.Navigator
         initialRouteName={"HomeRoutes"}
         screenOptions={{
           tabBarStyle: {
             backgroundColor: theme.colors.primary_alt,
-            minHeight: 55,
+            minHeight: 0,
           },
-          tabBarInactiveTintColor: "#fff",
-          tabBarActiveTintColor: theme.colors.accent,
-          tabBarLabelStyle: { fontSize: 12, marginBottom: "2%" },
+          tabBarInactiveTintColor: "#000000",
+          tabBarActiveTintColor: "#7B61FF",
+          tabBarLabelStyle: {
+            fontSize: 12,
+            fontStyle: "normal",
+            fontWeight: "500",
+            lineHeight: 16,
+          },
           tabBarHideOnKeyboard: true,
+          tabBarIconStyle: {
+            borderWidth: 0,
+          },
         }}
       >
-
-      <MainBottomTab.Screen
+        <MainBottomTab.Screen
           name="HomeRoutes"
           component={HomeRoutes}
           options={{
             headerShown: false,
-            tabBarLabel: "Properties",
-            tabBarIcon: ({ color, size }) => (
-              <Feather name="home" size={size} color={color} />
-            ),
+            tabBarLabel: "Comprar",
+            tabBarIcon: ({ color, size }) => <Image source={cartIcon} />,
           }}
         />
-       
       </MainBottomTab.Navigator>
     </NavigationContainer>
   );
 };
-
 
 const HomeStack = createNativeStackNavigator();
 
@@ -64,6 +71,7 @@ export const HomeRoutes = () => (
         },
         headerTintColor: "#fff",
         headerTitleAlign: "center",
+        headerTransparent: true,
       }}
     />
   </HomeStack.Navigator>
