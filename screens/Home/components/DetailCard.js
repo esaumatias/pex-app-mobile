@@ -11,6 +11,7 @@ import {
 
 import MyCarousel from "./MyCarousel";
 import CardModal from "./CardModal";
+import AddCartModal from './AddCartModal';
 import { TopBar } from "../../../components/TopBar";
 
 import phoneIcon from "../../../assets/phoneIcon.png";
@@ -24,6 +25,7 @@ import camIcon from "../../../assets/camIcon.png";
 export const DetailCard = ({ navigation, route }) => {
   const { value } = route.params;
   const [modalVisible, setModalVisible] = useState(false);
+  const [modalVisible2, setModalVisible2] = useState(false);
 
   const handlePress = () => {
     setModalVisible(true);
@@ -31,6 +33,14 @@ export const DetailCard = ({ navigation, route }) => {
 
   const handleClose = () => {
     setModalVisible(false);
+  };
+
+  const handlePress2 = () => {
+    setModalVisible2(true);
+  };
+
+  const handleClose2 = () => {
+    setModalVisible2(false);
   };
 
   return (
@@ -111,9 +121,17 @@ export const DetailCard = ({ navigation, route }) => {
             navigation={navigation}
           />
 
+
+          <AddCartModal
+            cardInfo={value}
+            visible={modalVisible2}
+            onClose={handleClose2}
+            navigation={navigation}
+          />
+
           <View style={styles.containerButons}>
             <TouchableOpacity
-              // onPress={signInForm.submitForm}
+              onPress={handlePress2}
               style={styles.buttonCadatrar}
             >
               <Text style={{ ...styles.texto, color: "#FFFFFF" }}>
