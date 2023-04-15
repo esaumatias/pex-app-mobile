@@ -80,7 +80,7 @@ export const SignUp = ({ navigation }) => {
                   image={IconSenha}
                 />
 
-            <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+            <TouchableOpacity onPress={() => navigation.navigate("TermosServico")}>
               <Text style={{ ...styles.texto, color: "#999999" }}>
                 Li e aceito os{" "}
                 <Text style={{ color: "#F09200" }}>Termos de serviço</Text>{" "}
