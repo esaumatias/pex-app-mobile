@@ -11,6 +11,9 @@ import { SessionContext } from "../providers/SessionProvider";
 
 import { Home } from "../screens/Home";
 import cartIcon from "../assets/cartIcon.png";
+import Profile from "../assets/Profile.png";
+import Bookmark from "../assets/Bookmark.png";
+import Discover from "../assets/Discover.png";
 
 const MainBottomTab = createBottomTabNavigator();
 
@@ -53,6 +56,36 @@ export const AuthorizedRoutes = () => {
             tabBarIcon: ({ color, size }) => <Image source={cartIcon} />,
           }}
         />
+
+        <MainBottomTab.Screen
+          name="HomeRoutes1"
+          component={HomeRoutes}
+          options={{
+            headerShown: false,
+            tabBarLabel: "Discover",
+            tabBarIcon: ({ color, size }) => <Image source={Discover} />,
+          }}
+        />
+
+        <MainBottomTab.Screen
+          name="HomeRoutes2"
+          component={HomeRoutes}
+          options={{
+            headerShown: false,
+            tabBarLabel: "Salvo",
+            tabBarIcon: ({ color, size }) => <Image source={Bookmark} />,
+          }}
+        />
+
+        <MainBottomTab.Screen
+          name="HomeRoutes3"
+          component={HomeRoutes}
+          options={{
+            headerShown: false,
+            tabBarLabel: "Perfil",
+            tabBarIcon: ({ color, size }) => <Image source={Profile} />,
+          }}
+        />
       </MainBottomTab.Navigator>
     </NavigationContainer>
   );
@@ -67,7 +100,7 @@ export const HomeRoutes = () => (
       component={Home}
       options={{
         headerStyle: {
-          backgroundColor: theme.colors.primary_alt,
+          // backgroundColor: theme.colors.primary_alt,
         },
         headerTintColor: "#fff",
         headerTitleAlign: "center",
