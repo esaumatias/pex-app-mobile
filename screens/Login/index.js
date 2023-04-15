@@ -87,7 +87,7 @@ export const Login = ({ navigation }) => {
             </View>
 
             <TouchableOpacity
-              onPress={() => navigation.navigate("Login")}
+              onPress={signInForm.submitForm}
               style={styles.buttomAcess}
             >
               <Text style={styles.texto}>Acessar</Text>

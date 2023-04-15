@@ -25,7 +25,7 @@ import userIcon from "../../assets/userIcon.png";
 import camIcon from "../../assets/camIcon.png";
 
 export const Step1 = ({ navigation, route }) => {
-  const { signIn } = useContext(SessionContext);
+  const { register } = useContext(SessionContext);
   const { value } = route.params;
 
   const signInForm = useFormik({
@@ -39,22 +39,18 @@ export const Step1 = ({ navigation, route }) => {
       date: yup
         .string()
         .trim()
-        .required("Por favor, insira a sua data de nascimento.")
-        .matches(
-          /^(?:(?:(?:0?[13578]|1[02])(\/)31)\1|(?:(?:0?[1,3-9]|1[0-2])(\/)(?:29|30)\2))(?:(?:1[6-9]|[2-9]\d)?\d{2})$|^(?:0?2(\/)29\3(?:(?:(?:1[6-9]|[2-9]\d)?(?:0[48]|[2468][048]|[13579][26])|(?:(?:16|[2468][048]|[3579][26])00))))(?:(?:0?[1-9])|(?:1[0-2]))\4(?:(?:1[6-9]|[2-9]\d)?\d{2})$/,
-          "Por favor, insira uma data de nascimento válida."
-        ),
+        .required("Por favor, insira a sua data de nascimento."),
       phone: yup
         .string()
         .trim()
-        .required("Por favor, insira o seu número de telefone.")
-        .matches(
-          /^[0-9]{10,11}$/,
-          "Por favor, insira um número de telefone válido."
-        ),
+        .required("Por favor, insira o seu número de telefone."),
     }),
-    onSubmit: (values) => signIn({ data: { ...value, values } }),
+    onSubmit: (values) => register({ data: { ...value, ...values } }),
   });
+
+  const handleContinue = () => {
+    register({ data: { ...value } })
+  }
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: "#fff" }}>
@@ -118,14 +114,14 @@ export const Step1 = ({ navigation, route }) => {
 
             <View style={styles.containerButons}>
               <TouchableOpacity
-                onPress={() => navigation.navigate("Login")}
+                onPress={handleContinue}
                 style={styles.buttonPular}
               >
                 <Text style={styles.texto}>Pular</Text>
               </TouchableOpacity>
 
               <TouchableOpacity
-                onPress={() => navigation.navigate("Login")}
+                onPress={signInForm.submitForm}
                 style={styles.buttonCadatrar}
               >
                 <Text style={{...styles.texto, color: '#FFFFFF'}}>Cadastrar</Text>
