@@ -20,8 +20,6 @@ export const SessionProvider = ({ children, expoToken }) => {
         setUserData(parsedUser);
       } else if (parsedUser.email === email && parsedUser.password !== password) {
         Alert.alert('Erro', 'Senha incorreta. Por favor, tente novamente.');
-      } else if (parsedUser.email !== email && parsedUser.password === password) {
-        Alert.alert('Erro', 'E-mail incorreto. Por favor, tente novamente.');
       } else {
         Alert.alert('Erro', 'Usuário não encontrado. Por favor, cadastre-se primeiro.');
       }
